@@ -40,5 +40,8 @@
     "*.js": "eslint --cache --fix",
     "*.css": "stylelint --fix",
     "*.{js,css,md}": "prettier --write"
+  },
+  "dependencies": {
+    "students": "^1.0.0"
   }
 }
