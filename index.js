@@ -33,7 +33,7 @@ const filterScore = (number, people) =>
 
 const render = () => {
   root.innerHTML = studentInputs();
-  root.innerHTML += buildTable(data.getStudents());
+  root.innerHTML += buildTable(data.getStudents(), data.studentsFiltered);
 
   const nameInput = document.querySelector("#name");
   const idInput = document.querySelector("#id");
