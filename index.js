@@ -41,12 +41,14 @@ const render = () => {
   const submit = document.querySelector("#submit");
   const filterScoreInput = document.querySelector("#filterScore");
   const submitFilter = document.querySelector("#submitFilter");
+  const testInput = document.querySelector("#test");
 
   submit.addEventListener("click", () => {
     data.addStudent({
       name: nameInput.value,
       scoreInput: scoreInput.value,
       id: idInput.value,
+      test: testInput.value,
     });
     render();
   });
