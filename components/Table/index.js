@@ -26,9 +26,9 @@ function renderTableRows(student, filters) {
     innerRet += tests[key].scores
       .map(
         (product) => `<tr>
-  <td>${product.name}</td>
-  <td>${product.score}</td>
-  <td>${product.id}</td>
+  <td>Name: ${product.name}</td>
+  <td>Score: ${product.score}</td>
+  <td>ID: ${product.id}</td>
 </tr>
 `
       )
