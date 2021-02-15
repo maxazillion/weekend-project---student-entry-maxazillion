@@ -4,14 +4,14 @@ import studentsData from "./store/students";
 
 const root = document.querySelector("#root");
 const data = {
-  students: studentsData,
+  students: [...studentsData],
   // going to be filled with {name: "", data: []}
   studentsFiltered: [],
   getStudents() {
     if (this.studentsFiltered.length === 0) {
       return this.students;
     }
-    let ret = [...studentsData];
+    let ret = [...this.students];
     this.studentsFiltered.forEach((list) => {
       ret = ret.filter((student) => list.data.includes(student));
     });
@@ -23,6 +23,7 @@ const data = {
     return ret;
   },
   addStudent(newStudent) {
+    this.studentsFiltered = [];
     this.students.push(newStudent);
   },
 };
@@ -49,6 +50,7 @@ const render = () => {
       score: scoreInput.value,
       test: testInput.value,
     });
+    console.log(data.students);
     render();
   });
 
@@ -65,7 +67,6 @@ const render = () => {
         name: "scoreFilter",
         data: filterScore(filterScoreInput.value, data.students),
       });
-      console.log(data.studentsFiltered);
     }
     render();
   });

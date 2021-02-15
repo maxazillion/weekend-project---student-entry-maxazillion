@@ -22,7 +22,6 @@ function renderTableRows(student, filters) {
   console.log(tests);
   Object.keys(tests).map((key) => {
     let innerRet = `<h2>Test: ${tests[key].name}</h2><table>`;
-    console.log(Object.keys(tests).length);
     innerRet += tests[key].scores
       .map(
         (product) => `<tr>
