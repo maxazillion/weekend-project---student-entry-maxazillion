@@ -1,17 +1,17 @@
 import studentInputs from "./components/InputStudent";
 import buildTable from "./components/Table";
-import students from "./store/students";
+import studentsData from "./store/students";
 
 const root = document.querySelector("#root");
 const data = {
-  students,
+  students: studentsData,
   // going to be filled with {name: "", data: []}
   studentsFiltered: [],
   getStudents() {
     if (this.studentsFiltered.length === 0) {
       return this.students;
     }
-    let ret = [...students];
+    let ret = [...studentsData];
     this.studentsFiltered.forEach((list) => {
       ret = ret.filter((student) => list.data.includes(student));
     });
@@ -45,23 +45,28 @@ const render = () => {
   submit.addEventListener("click", () => {
     data.addStudent({
       name: nameInput.value,
-      score: scoreInput.value,
       id: idInput.value,
+      score: scoreInput.value,
       test: testInput.value,
     });
     render();
   });
 
   submitFilter.addEventListener("click", () => {
+    let adjusted = false;
     data.studentsFiltered.forEach((obj) => {
       if (obj.name === "scoreFilter") {
-        obj.data = [...data.students];
+        obj.data = filterScore(filterScoreInput.value, data.students);
+        adjusted = true;
       }
     });
-    data.studentsFiltered.push({
-      name: "scoreFilter",
-      data: filterScore(filterScoreInput.value, data.students),
-    });
+    if (!adjusted) {
+      data.studentsFiltered.push({
+        name: "scoreFilter",
+        data: filterScore(filterScoreInput.value, data.students),
+      });
+      console.log(data.studentsFiltered);
+    }
     render();
   });
 };
