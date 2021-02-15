@@ -11,7 +11,6 @@ const data = {
     if (this.studentsFiltered.length === 0) {
       return this.students;
     }
-
     let ret = [...students];
     this.studentsFiltered.forEach((list) => {
       ret = ret.filter((student) => list.data.includes(student));
@@ -46,7 +45,7 @@ const render = () => {
   submit.addEventListener("click", () => {
     data.addStudent({
       name: nameInput.value,
-      scoreInput: scoreInput.value,
+      score: scoreInput.value,
       id: idInput.value,
       test: testInput.value,
     });

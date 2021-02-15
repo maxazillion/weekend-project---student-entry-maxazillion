@@ -14,7 +14,7 @@ function renderTableRows(student, filters) {
       tests.noName.scores.push(obj);
     } else if (!tests[obj.test]) {
       tests[obj.test] = { name: `${obj.test}`, scores: [obj] };
-    } else if (tests[obj.test] === obj.test) {
+    } else {
       tests[obj.test].scores.push(obj);
     }
   });
